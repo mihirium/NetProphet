@@ -6,18 +6,14 @@ import { useNavigation } from "@react-navigation/native";
 
 const fs = require('fs');
 
-const prediction = [];
+let prediction = [];
 
-// read the file line by line and add each line to an array
-const readInterface = readline.createInterface({
-    input: fs.createReadStream('results.txt'),
-    output: process.stdout,
-    console: false
-});
-
-readInterface.on('line', function(line) {
-  prediction.push(line);
-});
+fetch('results.txt')
+  .then(response => response.text())
+  .then(text => {
+    prediction = text.split('\n');
+  })
+  .catch(error => console.error(error));
 
 const gamesData = [
   {
