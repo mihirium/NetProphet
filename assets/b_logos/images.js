@@ -1,14 +1,6 @@
 // assets/b_logos/index.js
 
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  TouchableOpacity,
-  Button,
-  require
-} from "react-native";
+import { ImageSourcePropType } from "react-native";
 
 export default {
   atlanta_hawks_logos: require("./atlanta_hawks_logos.gif"),

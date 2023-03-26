@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
-import images from "../assets/b_logos/index";
+import images from "../assets/b_logos/images.js";
 
 
 var dict = {};
