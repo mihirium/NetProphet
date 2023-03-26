@@ -10,7 +10,6 @@ import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import images from "../assets/b_logos/images.js";
 
-
 var dict = {};
 dict["Atlanta Hawks"] = "atlanta_hawks_logos";
 dict["Boston Celtics"] = "boston_celtics_logos";
@@ -44,7 +43,7 @@ dict["Toronto Raptors"] = "toronto_raptors_logos";
 dict["Utah Jazz"] = "utah_jazz_logos";
 dict["Washington Wizards"] = "washington_wizards_logos";
 
-export default function GameItem({ teamOne, teamTwo , date, start_time}) {
+export default function GameItem({ teamOne, teamTwo, date, start_time }) {
   const navigation = useNavigation();
   return (
     <TouchableOpacity
@@ -60,10 +59,7 @@ export default function GameItem({ teamOne, teamTwo , date, start_time}) {
           <View>
             <View style={styles.row}>
               <View style={styles.imageContainer}>
-                <Image
-                  source={images[dict[teamOne]]}
-                  style={styles.image}
-                />
+                <Image source={images[dict[teamOne]]} style={styles.image} />
               </View>
               <View>
                 <Text style={styles.teamName}>{teamOne}</Text>
@@ -72,10 +68,7 @@ export default function GameItem({ teamOne, teamTwo , date, start_time}) {
             </View>
             <View style={styles.row}>
               <View style={styles.imageContainer}>
-                <Image
-                  source={images[dict[teamTwo]]}
-                  style={styles.image}
-                />
+                <Image source={images[dict[teamTwo]]} style={styles.image} />
               </View>
               <View>
                 <Text style={styles.teamName}>{teamTwo}</Text>
@@ -88,7 +81,10 @@ export default function GameItem({ teamOne, teamTwo , date, start_time}) {
             <Text> {teamOne} 45% </Text>
           </View>
         </View>
-        <Text style={styles.time}> Time: {start_time} Date: {date} </Text>
+        <Text style={styles.time}>
+          {" "}
+          Time: {start_time} Date: {date}{" "}
+        </Text>
       </View>
       {/* <Button
         title="teamOne"
