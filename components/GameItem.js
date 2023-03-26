@@ -76,7 +76,7 @@ WLdict["Portland Trail Blazers"] = [32, 41];
 WLdict["San Antonio Spurs"] = [19, 55];
 WLdict["Houston Rockets"] = [18, 56];
 
-export default function GameItem({ teamOne, teamTwo , date, start_time}) {
+export default function GameItem({ teamOne, teamTwo , date, start_time, prediction}) {
   const navigation = useNavigation();
   return (
     <TouchableOpacity
@@ -121,6 +121,7 @@ export default function GameItem({ teamOne, teamTwo , date, start_time}) {
           </View>
         </View>
         <Text style={styles.time}> Time: {start_time} Date: {date} </Text>
+        <Text >{prediction}</Text>
       </View>
       {/* <Button
         title="teamOne"
