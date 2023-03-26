@@ -1,39 +1,59 @@
-import { StyleSheet, Text, View, FlatList, SafeAreaView } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  SafeAreaView,
+  TouchableOpacity,
+} from "react-native";
 import React from "react";
-import GameItem from "../components/GameItem";
+import CurrentGames from "./CurrentGames.js";
 
-const gamesData = [
-  { id: 1, teamOne: "Lakers", teamTwo: "Warriors" },
-  { id: 2, teamOne: "Celtics", teamTwo: "Rockets" },
-  { id: 3, teamOne: "Bulls", teamTwo: "Heat" },
-];
+import { useNavigation } from "@react-navigation/native";
 
-export default function Home() {
-  const renderGameItem = ({ item }) => (
-    <GameItem teamOne={item.teamOne} teamTwo={item.teamTwo} />
-  );
-
+export default function Home({ route }) {
+  const navigation = useNavigation();
   return (
-    <SafeAreaView style={styles.backgroundContainer}>
-      <Text style={styles.currentGames}>Current Games</Text>
-      <FlatList
-        style={{ flex: 1 }}
-        data={gamesData}
-        keyExtractor={(item) => item.id.toString()}
-        renderItem={renderGameItem}
-      />
+    <SafeAreaView style={styles.container}>
+      <Text style={styles.heading}>Net Prophet</Text>
+
+      <TouchableOpacity style={styles.button}>
+        <Text style={styles.buttonText}>Current Games</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => {
+          navigation.navigate("TeamStats");
+        }}
+      >
+        <Text style={styles.buttonText}>Search Team Stats</Text>
+      </TouchableOpacity>
     </SafeAreaView>
   );
 }
-
 const styles = StyleSheet.create({
-  backgroundContainer: {
+  container: {
     flex: 1,
-    backgroundColor: "#F5F5F5",
+    backgroundColor: "#fff",
     alignItems: "center",
+    justifyContent: "center",
+    paddingHorizontal: 20,
   },
-  currentGames: {
+  heading: {
+    fontSize: 28,
     fontWeight: "bold",
-    fontSize: 30,
+    marginBottom: 20,
+  },
+  button: {
+    backgroundColor: "#4CAF50",
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 5,
+    marginVertical: 10,
+  },
+  buttonText: {
+    color: "#fff",
+    fontSize: 18,
+    fontWeight: "bold",
+    textAlign: "center",
   },
 });
