@@ -1,10 +1,12 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
+import SearchBar from "./SearchBar";
 
 export default function TeamStats() {
   return (
     <View style={styles.container}>
       <Text>TeamStats</Text>
+      <SearchBar />
     </View>
   );
 }
