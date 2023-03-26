@@ -76,20 +76,40 @@ WLdict["Portland Trail Blazers"] = [32, 41];
 WLdict["San Antonio Spurs"] = [19, 55];
 WLdict["Houston Rockets"] = [18, 56];
 
+var namedict = {};
+namedict["Atlanta Hawks"] = "Hawks";
+namedict["Boston Celtics"] = "Celtics";
+namedict["Brooklyn Nets"] = "Nets";
+
+namedict["Charlotte Hornets"] = "Hornets";
+namedict["Chicago Bulls"] = "Bulls";
+namedict["Cleveland Cavaliers"] = "Cavaliers";
+namedict["Dallas Mavericks"] = "Mavericks";
+namedict["Denver Nuggets"] = "Nuggets";
+namedict["Detroit Pistons"] = "Pistons";
+namedict["Golden State Warriors"] = "Warriors";
+namedict["Houston Rockets"] = "Rockets";
+namedict["Indiana Pacers"] = "Pacers";
+namedict["Los Angeles Clippers"] = "Clippers";
+namedict["Los Angeles Lakers"] = "Lakers";
+namedict["Memphis Grizzlies"] = "Grizzlies";
+namedict["Miami Heat"] = "Heat";
+namedict["Milwaukee Bucks"] = "Bucks";
+namedict["Minnesota Timberwolves"] = "Timberwolves";
+namedict["New Orleans Pelicans"] = "Pelicans";
+namedict["New York Knicks"] = "Knicks";
+namedict["Oklahoma City Thunder"] = "Thunder";
+namedict["Orlando Magic"] = "Magic";
+namedict["Philadelphia 76ers"] = "76ers";
+namedict["Phoenix Suns"] = "Suns";
+namedict["Portland Trail Blazers"] = "Trailblazers";
+namedict["Sacramento Kings"] = "Kings";
+namedict["San Antonio Spurs"] = "Spurs";
+namedict["Toronto Raptors"] = "Raptors";
+namedict["Utah Jazz"] = "Jazz";
+namedict["Washington Wizards"] = "Wizards";
+
 export default function GameItem({ id, teamOne, teamTwo, date, start_time }) {
-  // const [gameData, setGameData] = useState([]);
-
-  // useEffect(() => {
-  //   fetch('../results.json')
-  //     .then(response => response.json())
-  //     .then(data => {
-  //       setGameData(data);
-  //     })
-  //     .catch(error => {
-  //       console.error('Error fetching game data:', error);
-  //     });
-  // }, []);
-
   gameData = [
     { winner: "Milwaukee Bucks", confidence: 0.9488477799055619 },
     { winner: "Indiana Pacers", confidence: 0.5793588080296964 },
@@ -154,7 +174,7 @@ export default function GameItem({ id, teamOne, teamTwo, date, start_time }) {
                   <Image source={images[dict[teamOne]]} style={styles.image} />
                 </View>
                 <View>
-                  <Text style={styles.teamName}>{teamOne}</Text>
+                  <Text style={styles.teamName}>{namedict[teamOne]}</Text>
                   <Text style={styles.teamScore}>
                     {WLdict[teamOne][0]}-{WLdict[teamOne][1]}
                   </Text>
@@ -165,7 +185,7 @@ export default function GameItem({ id, teamOne, teamTwo, date, start_time }) {
                   <Image source={images[dict[teamTwo]]} style={styles.image} />
                 </View>
                 <View>
-                  <Text style={styles.teamName}>{teamTwo}</Text>
+                  <Text style={styles.teamName}>{namedict[teamTwo]}</Text>
                   <Text style={styles.teamScore}>
                     {WLdict[teamTwo][0]}-{WLdict[teamTwo][1]}
                   </Text>
