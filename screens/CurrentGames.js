@@ -1,6 +1,8 @@
 import { StyleSheet, Text, View, FlatList, SafeAreaView } from "react-native";
 import React from "react";
 import GameItem from "../components/GameItem";
+import BackButton from "../components/BackArrow";
+import { useNavigation } from "@react-navigation/native";
 
 const gamesData = [
   { id: 1, teamOne: "Lakers", teamTwo: "Warriors" },
@@ -9,13 +11,24 @@ const gamesData = [
 ];
 
 export default function Home() {
+  const navigation = useNavigation();
+
   const renderGameItem = ({ item }) => (
     <GameItem teamOne={item.teamOne} teamTwo={item.teamTwo} />
   );
 
   return (
     <SafeAreaView style={styles.backgroundContainer}>
-      <Text style={styles.currentGames}>Current Games</Text>
+      <View style={{ position: "absolute", top: 50, left: 20 }}>
+        <BackButton
+          onPress={() => {
+            navigation.goBack();
+          }}
+        />
+      </View>
+      <View style={{ flexDirection: "row" }}>
+        <Text style={styles.currentGames}>Current Games</Text>
+      </View>
       <FlatList
         style={{ flex: 1 }}
         data={gamesData}
