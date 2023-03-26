@@ -40,7 +40,7 @@ team_avg = {
     'Houston Rockets': [40.4,88.6,.456,10.6,32.4,.327,29.8,56.2,.531,19.1,25.3,.754,13.2,33.0,46.3,22.4,7.2,4.6,16.5,20.6,110.6]
 }
 
-nba_teams = {
+nba_alpha_to_full = {
     "ATL": "Atlanta Hawks",
     "BOS": "Boston Celtics",
     "BRK": "Brooklyn Nets",
@@ -89,16 +89,16 @@ def predict(visitor: str, home: str):
     forest = RandomForestClassifier(n_estimators=50)
     gnb = GaussianNB()
 
-    eclf = VotingClassifier(estimators=[('t', treeModel), ('svm', svmModel), ('lr', logreg), ('rf', forest), ('gnb', gnb)], voting='hard')
+    eclf = VotingClassifier(estimators=[('t', treeModel), ('svm', svmModel), ('rf', forest), ('gnb', gnb)], voting='hard')
     eclf = eclf.fit(data, labels)
 
-    visitor_stats = team_avg[nba_teams[visitor]]
-    home_stats = team_avg[nba_teams[home]]
+    visitor_stats = team_avg[nba_alpha_to_full[visitor]]
+    home_stats = team_avg[nba_alpha_to_full[home]]
 
     team_stats = {
-        "Visitor": nba_teams[visitor],
+        "Visitor": nba_alpha_to_full[visitor],
         "Visitor 3-Alpha": visitor,
-        "Home": nba_teams[home],
+        "Home": nba_alpha_to_full[home],
         "Home 3-Alpha": home,
         "Visitor FG": visitor_stats[0],
         "Visitor FGA": visitor_stats[1],
@@ -135,6 +135,6 @@ def predict(visitor: str, home: str):
     prediction = eclf.predict(pd.DataFrame(team_stats, index=[0]).iloc[:, 4:])
 
     if(prediction[0] == 0):
-        print(f"The {nba_teams[visitor]} are predicted to win!")
+        return f"The {nba_alpha_to_full[visitor]} are predicted to win!"
     else:
-        print(f"The {nba_teams[home]} are predicted to win!")
+        return f"The {nba_alpha_to_full[home]} are predicted to win!"
