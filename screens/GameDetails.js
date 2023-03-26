@@ -1,7 +1,6 @@
 import { StyleSheet, Text, View, Button, SafeAreaView } from "react-native";
 import React from "react";
 import SpecificTeamHome from "../components/SpecificTeamHome";
-import SpecificTeamAway from "../components/SpecificAwayTeam";
 import BackButton from "../components/BackArrow";
 import { useNavigation } from "@react-navigation/native";
 
@@ -19,8 +18,12 @@ export default function GameDetails(props) {
       </View>
       <View style={{ flexDirection: "row" }}>
         <SpecificTeamHome myTeam={props.route.params.teamOne} />
-        <SpecificTeamAway myTeam={props.route.params.teamTwo} />
+        <SpecificTeamHome myTeam={props.route.params.teamTwo} />
       </View>
+      <Text style={{ fontSize: 20, padding: 5, margin: 10 }}>
+        The {props.route.params.winner} have a {props.route.params.confidence}%
+        chance to win!
+      </Text>
       {/* <Text style={{ fontSize: 30 }}>{route.params.teamOne}</Text> */}
     </SafeAreaView>
   );
