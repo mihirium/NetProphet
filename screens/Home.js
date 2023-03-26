@@ -16,7 +16,12 @@ export default function Home({ route }) {
     <SafeAreaView style={styles.container}>
       <Text style={styles.heading}>Net Prophet</Text>
 
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => {
+          navigation.navigate("CurrentGames");
+        }}
+      >
         <Text style={styles.buttonText}>Current Games</Text>
       </TouchableOpacity>
       <TouchableOpacity
@@ -59,7 +64,7 @@ const styles = StyleSheet.create({
 });
 
 var dict = {};
-dict["Atlanta Hawks"] = 'atlanta_hawks_logos';
+dict["Atlanta Hawks"] = "atlanta_hawks_logos";
 dict["Boston Celtics"] = "boston_celtics_logos";
 dict["Brooklyn Nets"] = "brooklyn_nets_logos";
 
@@ -90,4 +95,3 @@ dict["San Antonio Spurs"] = "san_antonio_spurs_logos";
 dict["Toronto Raptors"] = "toronto_raptors_logos";
 dict["Utah Jazz"] = "utah_jazz_logos";
 dict["Washington Wizards"] = "washington_wizards_logos";
-
