@@ -5,7 +5,7 @@ import SearchBar from "./SearchBar";
 export default function TeamStats() {
   return (
     <View style={styles.container}>
-      <Text>TeamStats</Text>
+      <Text>Team Stats</Text>
       <SearchBar />
     </View>
   );
