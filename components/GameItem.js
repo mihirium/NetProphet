@@ -1,34 +1,54 @@
-import { StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import React from "react";
+import { useNavigation } from "@react-navigation/native";
 
 export default function GameItem({ teamOne, teamTwo }) {
+  const navigation = useNavigation();
   return (
-    <View style={[styles.box, styles.shadowProp]}>
-      <View style={styles.row}>
-        <View style={styles.imageContainer}>
-          <Image
-            source={require("../assets/teams/virginia.gif")}
-            style={styles.image}
-          />
+    <TouchableOpacity
+      onPress={() => {
+        navigation.navigate("GameDetails", {
+          teamOne: teamOne,
+          teamTwo: teamTwo,
+        });
+      }}
+    >
+      <View style={[styles.box, styles.shadowProp]}>
+        <View style={{ flexDirection: "row" }}>
+          <View>
+            <View style={styles.row}>
+              <View style={styles.imageContainer}>
+                <Image
+                  source={require("../assets/teams/virginia.gif")}
+                  style={styles.image}
+                />
+              </View>
+              <View>
+                <Text style={styles.teamName}>{teamOne}</Text>
+                <Text style={styles.teamScore}>12-1</Text>
+              </View>
+            </View>
+            <View style={styles.row}>
+              <View style={styles.imageContainer}>
+                <Image
+                  source={require("../assets/teams/virginia.gif")}
+                  style={styles.image}
+                />
+              </View>
+              <View>
+                <Text style={styles.teamName}>{teamTwo}</Text>
+                <Text style={styles.teamScore}>12-1</Text>
+              </View>
+            </View>
+          </View>
+          <View>
+            <Text style={styles.currentScore}> Score </Text>
+            <Text style={{ marginLeft: "15%" }}> {teamOne} 45% </Text>
+          </View>
         </View>
-        <View>
-          <Text style={styles.teamName}>{teamOne}</Text>
-          <Text style={styles.teamScore}>12-1</Text>
-        </View>
+        <Text style={styles.time}> Time: Monday 5-7:30pm</Text>
       </View>
-      <View style={styles.row}>
-        <View style={styles.imageContainer}>
-          <Image
-            source={require("../assets/teams/virginia.gif")}
-            style={styles.image}
-          />
-        </View>
-        <View>
-          <Text style={styles.teamName}>{teamTwo}</Text>
-          <Text style={styles.teamScore}>12-1</Text>
-        </View>
-      </View>
-    </View>
+    </TouchableOpacity>
   );
 }
 
@@ -71,5 +91,15 @@ const styles = StyleSheet.create({
     shadowOffset: { width: -2, height: 4 },
     shadowOpacity: 0.2,
     shadowRadius: 3,
+  },
+  time: {
+    fontSize: 15,
+    padding: 5,
+    marginLeft: 5,
+  },
+  currentScore: {
+    fontSize: 20,
+    fontWeight: "bold",
+    marginLeft: "15%",
   },
 });
