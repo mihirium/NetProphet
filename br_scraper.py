@@ -89,7 +89,7 @@ def scrape_url(url: str) -> None:
         "Visitor TOV": visitor_stats[15],
         "Visitor PF": visitor_stats[16],
         "Visitor PTS": visitor_stats[17],
-        "Home FG": visitor_stats[0],
+        "Home FG": home_stats[0],
         "Home FGA": home_stats[1],
         "Home 3P": home_stats[3],
         "Home 3PA": home_stats[4],
