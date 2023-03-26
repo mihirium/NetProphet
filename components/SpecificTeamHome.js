@@ -1,6 +1,5 @@
 import { StyleSheet, Text, View, Image, Button } from "react-native";
 import React from "react";
-import Virginia from "../assets/teams/virginia.gif";
 import match_history from "../match_history.json";
 import images from "../assets/b_logos/images.js";
 
@@ -77,6 +76,9 @@ export default function SpecificTeamHome({ myTeam }) {
       if (game.Home === team) {
         totalHome3Ps += game.Home_PTS;
       }
+      if (game.Visitor === team) {
+        totalHome3Ps += game.Visitor_PTS;
+      }
     });
     return totalHome3Ps;
   };
@@ -88,38 +90,99 @@ export default function SpecificTeamHome({ myTeam }) {
         totalHome3Ps += game.Home_3P;
         home3PA += game.Home_3PA;
       }
+      if (game.Visitor === team) {
+        totalHome3Ps += game.Visitor_3P;
+        home3PA += game.Visitor_3PA;
+      }
+    });
+    return Math.round((totalHome3Ps / home3PA) * 100);
+  };
+
+  const FGA = (team, gameData) => {
+    let totalHome3Ps = 0;
+    let home3PA = 0;
+    gameData.forEach((game) => {
+      if (game.Home === team) {
+        totalHome3Ps += game.Home_FG;
+        home3PA += game.Home_FGA;
+      }
+      if (game.Visitor === team) {
+        totalHome3Ps += game.Visitor_FG;
+        home3PA += game.Visitor_FGA;
+      }
+    });
+    return Math.round((totalHome3Ps / home3PA) * 100);
+  };
+
+  const FTA = (team, gameData) => {
+    let totalHome3Ps = 0;
+    let home3PA = 0;
+    gameData.forEach((game) => {
+      if (game.Home === team) {
+        totalHome3Ps += game.Home_FT;
+        home3PA += game.Home_FTA;
+      }
+      if (game.Visitor === team) {
+        totalHome3Ps += game.Visitor_FT;
+        home3PA += game.Visitor_FTA;
+      }
     });
     return Math.round((totalHome3Ps / home3PA) * 100);
   };
 
   return (
-    <View style={styles.box}>
-      <Text style={{ fontSize: 20, fontWeight: "bold" }}> {dict[myTeam]}</Text>
+    <View style={styles.container}>
+      <Text style={styles.title}>{dict[myTeam]}</Text>
       <Image source={images[dictImage[myTeam]]} style={styles.image} />
-      <Text> Odds: 45%</Text>
-      <Text> Total Points: {TotPts(myTeam, match_history)}</Text>
-      <Text> 3 Point Average: {ThreePA(myTeam, match_history)}%</Text>
+      <Text style={styles.info}>
+        Total Points: {TotPts(myTeam, match_history)}
+      </Text>
+      <Text style={styles.info}>
+        3 Point Average: {ThreePA(myTeam, match_history)}%
+      </Text>
+      <Text style={styles.info}>
+        Field Goal Average: {FGA(myTeam, match_history)}%
+      </Text>
+      <Text style={styles.info}>
+        Free Throw Average: {FTA(myTeam, match_history)}%
+      </Text>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  imageContainer: {
-    width: 50,
-    height: 50,
-    borderRadius: 5,
-    overflow: "hidden",
-    marginRight: 10,
-  },
-  image: {
-    width: 50,
-    height: 50,
-  },
-  box: {
+  container: {
     borderRadius: 20,
     width: "50%",
-    shadowColor: "black",
     backgroundColor: "white",
     margin: 5,
+    padding: 10,
+    alignItems: "center",
+    justifyContent: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+
+    elevation: 5,
+  },
+  title: {
+    fontSize: 20,
+    fontWeight: "bold",
+    marginBottom: 10,
+    textAlign: "center",
+  },
+  image: {
+    width: 80,
+    height: 80,
+    marginBottom: 10,
+  },
+  info: {
+    fontSize: 16,
+    marginBottom: 5,
+    textAlign: "center",
   },
 });

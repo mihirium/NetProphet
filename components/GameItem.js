@@ -9,8 +9,7 @@ import {
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import images from "../assets/b_logos/images.js";
-import { useState, useEffect } from 'react';
-
+import { useState, useEffect } from "react";
 
 var dict = {};
 dict["Atlanta Hawks"] = "atlanta_hawks_logos";
@@ -77,7 +76,7 @@ WLdict["Portland Trail Blazers"] = [32, 41];
 WLdict["San Antonio Spurs"] = [19, 55];
 WLdict["Houston Rockets"] = [18, 56];
 
-export default function GameItem({ id, teamOne, teamTwo , date, start_time}) {
+export default function GameItem({ id, teamOne, teamTwo, date, start_time }) {
   // const [gameData, setGameData] = useState([]);
 
   // useEffect(() => {
@@ -91,8 +90,48 @@ export default function GameItem({ id, teamOne, teamTwo , date, start_time}) {
   //     });
   // }, []);
 
-  gameData = [{"winner": "Milwaukee Bucks", "confidence": 0.9488477799055619}, {"winner": "Indiana Pacers", "confidence": 0.5793588080296964}, {"winner": "New York Knicks", "confidence": 0.6970027201069214}, {"winner": "Utah Jazz", "confidence": 0.6575260877920591}, {"winner": "Philadelphia 76ers", "confidence": 0.7510211578868555}, {"winner": "New Orleans Pelicans", "confidence": 0.5545899483360858}, {"winner": "Sacramento Kings", "confidence": 0.5464415233356984}, {"winner": "Chicago Bulls", "confidence": 0.5192502177793463}, {"winner": "Boston Celtics", "confidence": 0.9264413220171058}, {"winner": "Atlanta Hawks", "confidence": 0.5599876123216468}, {"winner": "Toronto Raptors", "confidence": 0.6274470752470684}, {"winner": "Memphis Grizzlies", "confidence": 0.7064537617981635}, {"winner": "Oklahoma City Thunder", "confidence": 0.5892870505777106}, {"winner": "Golden State Warriors", "confidence": 0.7739121421426891}, {"winner": "Milwaukee Bucks", "confidence": 0.8057059698407021}, {"winner": "Brooklyn Nets", "confidence": 0.5857319389803683}, {"winner": "New York Knicks", "confidence": 0.7287308157623906}, {"winner": "Philadelphia 76ers", "confidence": 0.5182734846986891}, {"winner": "Los Angeles Lakers", "confidence": 0.8989153246282839}, {"winner": "Memphis Grizzlies", "confidence": 0.6733159631246786}, {"winner": "Oklahoma City Thunder", "confidence": 0.6730191571874764}, {"winner": "Utah Jazz", "confidence": 0.9038591054118604}, {"winner": "Minnesota Timberwolves", "confidence": 0.8567757964897453}, {"winner": "Sacramento Kings", "confidence": 0.8723911453195553}, {"winner": "Boston Celtics", "confidence": 0.607946081769198}, {"winner": "Denver Nuggets", "confidence": 0.5525285557162729}, {"winner": "Chicago Bulls", "confidence": 0.5509365968379657}, {"winner": "Oklahoma City Thunder", "confidence": 0.8075189728726727}, {"winner": "Philadelphia 76ers", "confidence": 0.5307990758684205}, {"winner": "Washington Wizards", "confidence": 0.5475192825908576}, {"winner": "Utah Jazz", "confidence": 0.5768532634905257}, {"winner": "Atlanta Hawks", "confidence": 0.8939063204819577}, {"winner": "New York Knicks", "confidence": 0.8547819075014793}, {"winner": "Houston Rockets", "confidence": 0.5132417350291185}, {"winner": "Memphis Grizzlies", "confidence": 0.6305021033003364}, {"winner": "Los Angeles Lakers", "confidence": 0.8943749865471452}, {"winner": "Golden State Warriors", "confidence": 0.840342675861958}, {"winner": "Sacramento Kings", "confidence": 0.9414718285278703}, {"winner": "Denver Nuggets", "confidence": 0.8905324147818856}]
-  const game = gameData[id - 1]
+  gameData = [
+    { winner: "Milwaukee Bucks", confidence: 0.9488477799055619 },
+    { winner: "Indiana Pacers", confidence: 0.5793588080296964 },
+    { winner: "New York Knicks", confidence: 0.6970027201069214 },
+    { winner: "Utah Jazz", confidence: 0.6575260877920591 },
+    { winner: "Philadelphia 76ers", confidence: 0.7510211578868555 },
+    { winner: "New Orleans Pelicans", confidence: 0.5545899483360858 },
+    { winner: "Sacramento Kings", confidence: 0.5464415233356984 },
+    { winner: "Chicago Bulls", confidence: 0.5192502177793463 },
+    { winner: "Boston Celtics", confidence: 0.9264413220171058 },
+    { winner: "Atlanta Hawks", confidence: 0.5599876123216468 },
+    { winner: "Toronto Raptors", confidence: 0.6274470752470684 },
+    { winner: "Memphis Grizzlies", confidence: 0.7064537617981635 },
+    { winner: "Oklahoma City Thunder", confidence: 0.5892870505777106 },
+    { winner: "Golden State Warriors", confidence: 0.7739121421426891 },
+    { winner: "Milwaukee Bucks", confidence: 0.8057059698407021 },
+    { winner: "Brooklyn Nets", confidence: 0.5857319389803683 },
+    { winner: "New York Knicks", confidence: 0.7287308157623906 },
+    { winner: "Philadelphia 76ers", confidence: 0.5182734846986891 },
+    { winner: "Los Angeles Lakers", confidence: 0.8989153246282839 },
+    { winner: "Memphis Grizzlies", confidence: 0.6733159631246786 },
+    { winner: "Oklahoma City Thunder", confidence: 0.6730191571874764 },
+    { winner: "Utah Jazz", confidence: 0.9038591054118604 },
+    { winner: "Minnesota Timberwolves", confidence: 0.8567757964897453 },
+    { winner: "Sacramento Kings", confidence: 0.8723911453195553 },
+    { winner: "Boston Celtics", confidence: 0.607946081769198 },
+    { winner: "Denver Nuggets", confidence: 0.5525285557162729 },
+    { winner: "Chicago Bulls", confidence: 0.5509365968379657 },
+    { winner: "Oklahoma City Thunder", confidence: 0.8075189728726727 },
+    { winner: "Philadelphia 76ers", confidence: 0.5307990758684205 },
+    { winner: "Washington Wizards", confidence: 0.5475192825908576 },
+    { winner: "Utah Jazz", confidence: 0.5768532634905257 },
+    { winner: "Atlanta Hawks", confidence: 0.8939063204819577 },
+    { winner: "New York Knicks", confidence: 0.8547819075014793 },
+    { winner: "Houston Rockets", confidence: 0.5132417350291185 },
+    { winner: "Memphis Grizzlies", confidence: 0.6305021033003364 },
+    { winner: "Los Angeles Lakers", confidence: 0.8943749865471452 },
+    { winner: "Golden State Warriors", confidence: 0.840342675861958 },
+    { winner: "Sacramento Kings", confidence: 0.9414718285278703 },
+    { winner: "Denver Nuggets", confidence: 0.8905324147818856 },
+  ];
+  const game = gameData[id - 1];
 
   const navigation = useNavigation();
   return (
@@ -101,49 +140,51 @@ export default function GameItem({ id, teamOne, teamTwo , date, start_time}) {
         navigation.navigate("GameDetails", {
           teamOne: teamOne,
           teamTwo: teamTwo,
+          winner: game.winner,
+          confidence: Math.round(game.confidence * 100),
         });
       }}
     >
       <View style={[styles.box, styles.shadowProp]}>
         <View style={{ flexDirection: "row" }}>
-          <View>
-            <View style={styles.row}>
-              <View style={styles.imageContainer}>
-                <Image
-                  source={images[dict[teamOne]]}
-                  style={styles.image}
-                />
+          <View style={{ flexDirection: "row" }}>
+            <View>
+              <View style={styles.row}>
+                <View style={styles.imageContainer}>
+                  <Image source={images[dict[teamOne]]} style={styles.image} />
+                </View>
+                <View>
+                  <Text style={styles.teamName}>{teamOne}</Text>
+                  <Text style={styles.teamScore}>
+                    {WLdict[teamOne][0]}-{WLdict[teamOne][1]}
+                  </Text>
+                </View>
               </View>
-              <View>
-                <Text style={styles.teamName}>{teamOne}</Text>
-                <Text style={styles.teamScore}>{WLdict[teamOne][0]}-{WLdict[teamOne][1]}</Text>
+              <View style={styles.row}>
+                <View style={styles.imageContainer}>
+                  <Image source={images[dict[teamTwo]]} style={styles.image} />
+                </View>
+                <View>
+                  <Text style={styles.teamName}>{teamTwo}</Text>
+                  <Text style={styles.teamScore}>
+                    {WLdict[teamTwo][0]}-{WLdict[teamTwo][1]}
+                  </Text>
+                </View>
               </View>
             </View>
-            <View style={styles.row}>
-              <View style={styles.imageContainer}>
-                <Image
-                  source={images[dict[teamTwo]]}
-                  style={styles.image}
-                />
-              </View>
-              <View>
-                <Text style={styles.teamName}>{teamTwo}</Text>
-                <Text style={styles.teamScore}>{WLdict[teamTwo][0]}-{WLdict[teamTwo][1]}</Text>
-              </View>
-            </View>
+            <View></View>
           </View>
-          <View>
+          <View style={{ flex: 1, marginTop: "3%" }}>
+            <Text style={styles.time} ellipsizeMode="tail">
+              The {game.winner} have a {Math.round(game.confidence * 100)}%
+              chance to win!
+            </Text>
           </View>
         </View>
-        <Text style={styles.time}> Time: {start_time} Date: {date} </Text>
-        <Text >The {game.winner} have a {Math.round(game.confidence * 100)}% chance to win!</Text>
+        <Text style={styles.confidence}>
+          Time: {start_time} {date}
+        </Text>
       </View>
-      {/* <Button
-        title="teamOne"
-        onPress={() => {
-          console.log(typeof dict[teamTwo]);
-        }}
-      ></Button> */}
     </TouchableOpacity>
   );
 }
@@ -196,5 +237,10 @@ const styles = StyleSheet.create({
   currentScore: {
     fontSize: 20,
     fontWeight: "bold",
+  },
+  confidence: {
+    fontSize: 15,
+    marginLeft: 5,
+    padding: 5,
   },
 });
