@@ -5,9 +5,9 @@ import BackButton from "../components/BackArrow";
 import { useNavigation } from "@react-navigation/native";
 
 const gamesData = [
-  { id: 1, teamOne: "Lakers", teamTwo: "Warriors" },
-  { id: 2, teamOne: "Celtics", teamTwo: "Rockets" },
-  { id: 3, teamOne: "Bulls", teamTwo: "Heat" },
+  { id: 1, teamOne: "Los Angeles Lakers", teamTwo: "Golden State Warriors" },
+  { id: 2, teamOne: "Boston Celtics", teamTwo: "Houston Rockets" },
+  { id: 3, teamOne: "Chicago Bulls", teamTwo: "Miami Heat" },
 ];
 
 export default function Home() {
