@@ -24,7 +24,7 @@ const teamNames = [
   "Houston Rockets",
   "Indiana Pacers",
   "Los Angeles Clippers",
-  "LA Lakers",
+  "Los Angeles Lakers",
   "Memphis Grizzlies",
   "Miami Heat",
   "Milwaukee Bucks",
