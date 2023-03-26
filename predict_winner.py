@@ -6,6 +6,7 @@ from sklearn import svm
 from sklearn.naive_bayes import GaussianNB
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.ensemble import VotingClassifier
+from sklearn.metrics import accuracy_score
 
 team_avg = {
     'Boston Celtics': [42.0, 88.6, 0.474, 16.0, 42.3, 0.377, 26.0, 46.3, 0.562, 17.9, 22.0, 0.816, 9.6, 35.5, 45.1, 26.4, 6.5, 5.1, 13.4, 19.2, 117.9],
@@ -79,17 +80,17 @@ def predict(visitor: str, home: str):
     data = dataset.iloc[:, 4:]
 
     point_diff = data['Visitor PTS'] - data['Home PTS']
-    mask = point_diff > 0
+    mask = point_diff < 0
     labels = np.array(mask.astype(int))
     #X_train, X_test, y_train, y_test = train_test_split(data, labels, test_size=0.2)
 
     treeModel = tree.DecisionTreeClassifier()
-    svmModel = svm.SVC()
-    logreg = LogisticRegression(random_state=1)
+    svmModel = svm.SVC(probability=True)
+    logreg = LogisticRegression()
     forest = RandomForestClassifier(n_estimators=50)
     gnb = GaussianNB()
 
-    eclf = VotingClassifier(estimators=[('t', treeModel), ('svm', svmModel), ('rf', forest), ('gnb', gnb)], voting='hard')
+    eclf = VotingClassifier(estimators=[('t', treeModel), ('svm', svmModel), ('rf', forest), ('gnb', gnb)], voting='soft')
     eclf = eclf.fit(data, labels)
 
     visitor_stats = team_avg[nba_alpha_to_full[visitor]]
@@ -132,9 +133,9 @@ def predict(visitor: str, home: str):
         "Home PTS": home_stats[20],
     }
 
-    prediction = eclf.predict(pd.DataFrame(team_stats, index=[0]).iloc[:, 4:])
+    prediction = eclf.predict_proba(pd.DataFrame(team_stats, index=[0]).iloc[:, 4:])[0]
 
-    if(prediction[0] == 0):
-        return f"The {nba_alpha_to_full[visitor]} are predicted to win!"
+    if(prediction[0] > prediction[1]):
+        return {'winner': nba_alpha_to_full[visitor], 'confidence': prediction[0]}
     else:
-        return f"The {nba_alpha_to_full[home]} are predicted to win!"
+        return {'winner': nba_alpha_to_full[home], 'confidence': prediction[1]}
