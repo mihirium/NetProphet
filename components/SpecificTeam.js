@@ -5,10 +5,7 @@ import images from "../assets/b_logos/images.js";
 export default function SpecificTeam({ myTeam }) {
   return (
     <View>
-      <Image
-        source={images[dict[myTeam]]}
-        style={styles.image}
-      />
+      <Image source={images[dict[myTeam]]} style={styles.image} />
       <Text> {myTeam}</Text>
     </View>
   );
